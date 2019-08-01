@@ -1,0 +1,3 @@
+[submodule "qb-linux"]
+	path = qb-linux
+	url = https://github.com/tmykhalevych/qb-linux.git
