@@ -1,7 +1,5 @@
-add_custom_command( fw-build
-    # TODO: Implement
-)
+include(cmake/linux.cmake)
 
-add_custom_command( fw-image
+function(add_to_firmware TARGET)
     # TODO: Implement
-)
+endfunction()
