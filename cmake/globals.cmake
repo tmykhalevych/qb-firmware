@@ -7,3 +7,5 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_VERBOSE_MAKEFILE ON)
 add_compile_options(-Wno-psabi)
+
+set(PROJECT_BUILD_DIR ${CMAKE_BINARY_DIR}/artifacts)

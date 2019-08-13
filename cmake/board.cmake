@@ -32,3 +32,5 @@ elseif (BOARD STREQUAL rp4)
     set(DEFCONFIG bcm2711_defconfig)
 
 endif ()
+
+set(BOARD_BUILD_DIR ${PROJECT_BUILD_DIR}/${BOARD})
