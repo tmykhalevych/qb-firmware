@@ -22,6 +22,7 @@ user@project-dir: sudo apt-get install cmake git make bc bison flex libssl-dev
 ```
 user@project-dir git clone https://github.com/raspberrypi/tools ~/tools
 ```
+3) Get the Linaro `gcc-linaro-7.3.1-2018.05-x86_64_aarch64-linux-gnu` toolchain from the internet and locate it also at `~/tools`. It is needed to compile firmware applications using C++17 standard.
 
 ## How to build
 It is preferable to build all Linux/qb stuff as a root user, so:
@@ -83,8 +84,6 @@ To compose bootloaders, kernel, firmware and auxiliary apps, run:
 root@project-dir: cmake --build ${BUILD_DIRECTORY_PATH} --target compose
 ```
 
-All build artifacts are located at `${BUILD_DIRECTORY_PATH}/artifacts/${board}` (e.g. following this tutorial, they will be at `project-dir/build/artifacts/rp3`). Installed OS and Firmware should be at `${BUILD_DIRECTORY_PATH}/artifacts/${board}/fakeroot`, OS image - at `${BUILD_DIRECTORY_PATH}/artifacts/${board}/images`.
-
 Also, there are targets to clean all build output (separately for the Linux and Firmware):
 ```
 root@project-dir: cmake --build ${BUILD_DIRECTORY_PATH} --target clean
@@ -92,6 +91,18 @@ root@project-dir: cmake --build ${BUILD_DIRECTORY_PATH} --target os-clean
 ```
 
 You can explore [cmake/linux.cmake](cmake/linux.cmake) and [cmake/firmware.cmake](cmake/firmware.cmake) for more details about build targets.
+
+## Build artifacts
+
+This table describes where all build/compose artifacts should be:
+| Artifacts                          | Path                                                   |
+| ---------------------------------- |:------------------------------------------------------:|
+| All build artifacts                | `${BUILD_DIRECTORY_PATH}/artifacts/`                   |
+| Linux build output                 | `${BUILD_DIRECTORY_PATH}/artifacts/linux/`             |
+| Bootloaders and it's configs       | `${BUILD_DIRECTORY_PATH}/artifacts/firmware/boot`      |
+| Linux kernel image and device tree | `${BUILD_DIRECTORY_PATH}/artifacts/firmware/kernel`    |
+| Root filesystem                    | `${BUILD_DIRECTORY_PATH}/artifacts/firmware/rootfs`    |
+| All firmware files                 | `${BUILD_DIRECTORY_PATH}/artifacts/firmware/rootfs/qb` |
 
 ## Maintainers
 * Taras Mykhalevych (taras.mykhalevych@gmail.com)
