@@ -78,16 +78,16 @@ root@project-dir: cmake --build ${BUILD_DIRECTORY_PATH} --target os-build
 root@project-dir: cmake --build ${BUILD_DIRECTORY_PATH} --target install
 ```
 
-To make all-in-one Firmware bootable image, run:
+To compose bootloaders, kernel, firmware and auxiliary apps, run:
 ```
-root@project-dir: cmake --build ${BUILD_DIRECTORY_PATH} --target fw-image
+root@project-dir: cmake --build ${BUILD_DIRECTORY_PATH} --target compose
 ```
 
 All build artifacts are located at `${BUILD_DIRECTORY_PATH}/artifacts/${board}` (e.g. following this tutorial, they will be at `project-dir/build/artifacts/rp3`). Installed OS and Firmware should be at `${BUILD_DIRECTORY_PATH}/artifacts/${board}/fakeroot`, OS image - at `${BUILD_DIRECTORY_PATH}/artifacts/${board}/images`.
 
 Also, there are targets to clean all build output (separately for the Linux and Firmware):
 ```
-root@project-dir: cmake --build ${BUILD_DIRECTORY_PATH} --target fw-clean
+root@project-dir: cmake --build ${BUILD_DIRECTORY_PATH} --target clean
 root@project-dir: cmake --build ${BUILD_DIRECTORY_PATH} --target os-clean
 ```
 

@@ -15,6 +15,6 @@ function( add_fw_unit unit)
     )
 endfunction()
 
-add_custom_target( image
+add_custom_target( compose
     # TODO: Implement
 )
