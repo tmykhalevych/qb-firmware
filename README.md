@@ -75,7 +75,7 @@ root@project-dir: cmake --build ${BUILD_DIRECTORY_PATH} --target os-configure
 Now it is time to start the OS and Firmware build processes:
 ```
 root@project-dir: cmake --build ${BUILD_DIRECTORY_PATH} --target os-build
-root@project-dir: cmake --build ${BUILD_DIRECTORY_PATH} --target fw-build
+root@project-dir: cmake --build ${BUILD_DIRECTORY_PATH} --target install
 ```
 
 To make all-in-one Firmware bootable image, run:

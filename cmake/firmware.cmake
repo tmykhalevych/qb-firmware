@@ -1,17 +1,20 @@
 include(cmake/linux.cmake)
 
-function(add_to_firmware TARGET)
-    # TODO: Implement
+function( add_fw_module target)
+    install(
+        TARGETS ${target}
+        RUNTIME DESTINATION qb/bin
+        LIBRARY DESTINATION qb/lib
+    )
 endfunction()
 
-add_custom_target( fw-build
-    # TODO: Implement
-)
+function( add_fw_unit unit)
+    install(
+        FILES ${unit} 
+        DESTINATION qb/system
+    )
+endfunction()
 
-add_custom_target( fw-image
-    # TODO: Implement
-)
-
-add_custom_target( fw-clean
+add_custom_target( image
     # TODO: Implement
 )

@@ -1,11 +1,17 @@
+# Define languages standards
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
-
 set(CMAKE_C_STANDARD 11)
 
+# Define root folders for different FIRMWARE parts
+set(FIRMWARE_BUILD_ROOT ${CMAKE_BINARY_DIR}/artifacts)
+set(FIRMWARE_BOOT_ROOT ${FIRMWARE_BUILD_ROOT}/firmware/boot)
+set(FIRMWARE_KERNEL_ROOT ${FIRMWARE_BUILD_ROOT}/firmware/kernel)
+set(FIRMWARE_ROOTFS_ROOT ${FIRMWARE_BUILD_ROOT}/firmware/rootfs)
+
+# Configure CMake auxiliary options
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_VERBOSE_MAKEFILE ON)
-add_compile_options(-Wno-psabi)
-
-set(PROJECT_BUILD_DIR ${CMAKE_BINARY_DIR}/artifacts)
+set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
+set(CMAKE_INSTALL_PREFIX ${FIRMWARE_ROOTFS_ROOT})
