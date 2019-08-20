@@ -4,7 +4,7 @@ set(ARCH arm)
 set(CROSS_COMPILE arm-linux-gnueabihf-) # TODO: Try to build via Linaro
 
 set(LINUX_SRC_DIR ${PROJECT_SOURCE_DIR}/linux)
-set(LINUX_BUILD_DIR ${FIRMWARE_BUILD_ROOT}/linux)
+set(LINUX_BUILD_DIR ${CMAKE_BINARY_DIR}/linux)
 set(LINUX_OUT_DIR ${LINUX_BUILD_DIR}/arch/arm/boot)
 set(LINUX_CROSSCOMPILE_PARAMS ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} O=${LINUX_BUILD_DIR})
 set(LINUX_MAKE_PARAMS) # Currently there is nothing here
