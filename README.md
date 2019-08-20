@@ -95,14 +95,15 @@ You can explore [cmake/linux.cmake](cmake/linux.cmake) and [cmake/firmware.cmake
 ## Build artifacts
 
 This table describes where all build/compose artifacts should be:
-| Artifacts                          | Path                                                   |
-| ---------------------------------- |:------------------------------------------------------:|
-| All build artifacts                | `${BUILD_DIRECTORY_PATH}/artifacts/`                   |
-| Linux build output                 | `${BUILD_DIRECTORY_PATH}/artifacts/linux/`             |
-| Bootloaders and it's configs       | `${BUILD_DIRECTORY_PATH}/artifacts/firmware/boot`      |
-| Linux kernel image and device tree | `${BUILD_DIRECTORY_PATH}/artifacts/firmware/kernel`    |
-| Root filesystem                    | `${BUILD_DIRECTORY_PATH}/artifacts/firmware/rootfs`    |
-| All firmware files                 | `${BUILD_DIRECTORY_PATH}/artifacts/firmware/rootfs/qb` |
+
+| Artifacts | Path | 
+| --- |----| 
+| All build artifacts | `${BUILD_DIRECTORY_PATH}/artifacts/` | 
+| Linux build output | `${BUILD_DIRECTORY_PATH}/artifacts/linux/` | 
+| Bootloaders and it's configs | `${BUILD_DIRECTORY_PATH}/artifacts/firmware/boot` | 
+| Linux kernel image and device tree | `${BUILD_DIRECTORY_PATH}/artifacts/firmware/kernel` | 
+| Root filesystem | `${BUILD_DIRECTORY_PATH}/artifacts/firmware/rootfs` | 
+| All firmware files | `${BUILD_DIRECTORY_PATH}/artifacts/firmware/rootfs/qb` | 
 
 ## Maintainers
 * Taras Mykhalevych (taras.mykhalevych@gmail.com)
