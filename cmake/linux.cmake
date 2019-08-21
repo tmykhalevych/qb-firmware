@@ -1,20 +1,39 @@
-add_custom_target( os-prepare
-    if (NATIVECOMP)
-        COMMAND make ${DEFCONFIG}
-    else ()
-        COMMAND make ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} ${DEFCONFIG}
-    endif ()
+include(cmake/board.cmake)
+
+set(ARCH arm)
+set(CROSS_COMPILE arm-linux-gnueabihf-) # TODO: Try to build via Linaro
+
+set(LINUX_SRC_DIR ${PROJECT_SOURCE_DIR}/linux)
+set(LINUX_BUILD_DIR ${CMAKE_BINARY_DIR}/linux)
+set(LINUX_OUT_DIR ${LINUX_BUILD_DIR}/arch/arm/boot)
+set(LINUX_CROSSCOMPILE_PARAMS ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} O=${LINUX_BUILD_DIR})
+set(LINUX_MAKE_PARAMS) # Currently there is nothing here
+set(LINUX_BUILD_TARGETS zImage modules dtbs)
+set(LINUX_INSTALL_TARGETS modules_install)
+set(LINUX_INSTALL_FLAFS INSTALL_MOD_PATH=${CMAKE_INSTALL_PREFIX})
+
+add_custom_target( os-configure
+    COMMAND sh ${PROJECT_SOURCE_DIR}/setup.env
+    COMMAND make ${LINUX_MAKE_PARAMS} distclean
+    COMMAND make ${LINUX_MAKE_PARAMS} ${LINUX_CROSSCOMPILE_PARAMS} ${DEFCONFIG}
+    WORKING_DIRECTORY ${LINUX_SRC_DIR}
 )
 
 add_custom_target( os-build
-    if (NATIVECOMP)
-        COMMAND make -j4 zImage modules dtbs
-        COMMAND make modules_install
-        COMMAND cp arch/arm/boot/dts/*.dtb /boot/
-        COMMAND cp arch/arm/boot/dts/overlays/*.dtb* /boot/overlays/
-        COMMAND cp arch/arm/boot/dts/overlays/README /boot/overlays/
-        COMMAND cp arch/arm/boot/zImage /boot/$KERNEL.img
-    else ()
-        COMMAND make ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} zImage modules dtbs
-    endif ()
+    COMMAND sh ${PROJECT_SOURCE_DIR}/setup.env
+    COMMAND make ${LINUX_MAKE_PARAMS} clean
+    COMMAND make ${LINUX_MAKE_PARAMS} ${LINUX_CROSSCOMPILE_PARAMS} ${LINUX_BUILD_TARGETS}
+    COMMAND make ${LINUX_MAKE_PARAMS} ${LINUX_CROSSCOMPILE_PARAMS} ${LINUX_INSTALL_FLAFS} ${LINUX_INSTALL_TARGETS}
+    COMMAND mkdir -p ${FIRMWARE_KERNEL_ROOT}
+    COMMAND mkdir -p ${FIRMWARE_KERNEL_ROOT}/overlays
+    COMMAND cp -u ${LINUX_OUT_DIR}/zImage ${FIRMWARE_KERNEL_ROOT}/${KERNEL}.img
+    COMMAND cp -u ${LINUX_OUT_DIR}/dts/*.dtb ${FIRMWARE_KERNEL_ROOT}/
+    COMMAND cp -u ${LINUX_OUT_DIR}/dts/overlays/*.dtb* ${FIRMWARE_KERNEL_ROOT}/overlays/
+    WORKING_DIRECTORY ${LINUX_SRC_DIR}
+)
+
+add_custom_target( os-clean
+    COMMAND make ${LINUX_MAKE_PARAMS} distclean
+    COMMAND rm -rf ${FIRMWARE_KERNEL_ROOT}
+    WORKING_DIRECTORY ${LINUX_SRC_DIR}
 )

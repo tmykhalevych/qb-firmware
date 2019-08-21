@@ -1,7 +1,20 @@
-add_custom_command( fw-build
-    # TODO: Implement
-)
+include(cmake/linux.cmake)
 
-add_custom_command( fw-image
+function( add_fw_module target)
+    install(
+        TARGETS ${target}
+        RUNTIME DESTINATION qb/bin
+        LIBRARY DESTINATION qb/lib
+    )
+endfunction()
+
+function( add_fw_unit unit)
+    install(
+        FILES ${unit} 
+        DESTINATION qb/system
+    )
+endfunction()
+
+add_custom_target( compose
     # TODO: Implement
 )

@@ -1,9 +1,6 @@
-if (NOT NATIVECOMP)
-    message("== Set NATIVE COMPILING mode")
-else ()
-    message("== Set CROSS COMPILING as a default mode")
-    set(ARCH arm)
-    set(CROSS_COMPILE arm-linux-gnueabihf-)
+if (NOT BOARD)
+    message("== Set default BIARD to Raspberry Pi 3")
+    set(BOARD rp3)
 endif ()
 
 if ((BOARD STREQUAL rp1) OR (BOARD STREQUAL rp0) OR (BOARD STREQUAL rp0w) OR (BOARD STREQUAL cm))
@@ -25,5 +22,4 @@ elseif (BOARD STREQUAL rp4)
     set(CMAKE_SYSTEM_PROCESSOR cortex-a72)
     set(KERNEL kernel7l)
     set(DEFCONFIG bcm2711_defconfig)
-
 endif ()
