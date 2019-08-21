@@ -12,7 +12,7 @@ Then you need to update the submodules:
 user@project-dir: git submodule update --recursive
 ```
 
-### Build requirements:
+### Build requirements
 1) Make sure that you have all applications required:
 ```
 user@project-dir: sudo apt-get updare
@@ -23,6 +23,9 @@ user@project-dir: sudo apt-get install cmake git make bc bison flex libssl-dev
 user@project-dir git clone https://github.com/raspberrypi/tools ~/tools
 ```
 3) Get the Linaro `gcc-linaro-7.3.1-2018.05-x86_64_aarch64-linux-gnu` toolchain from the [Linaro Releases](https://releases.linaro.org/components/toolchain/binaries/latest-7/aarch64-linux-gnu/) page, unzip it and locate at `~/tools` as well. It is needed to compile qb applications using C++17 standard.
+
+### Bootloader
+This project uses [U-Boot](https://github.com/u-boot/u-boot) as a second stage bootloader. It is linked as a submodule and located at `project-dir/boot/u-boot` folder.
 
 ## How to build
 It is preferable to build all Linux/qb stuff as a root user, so:

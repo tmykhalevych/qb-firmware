@@ -1,4 +1,5 @@
 include(cmake/linux.cmake)
+include(cmake/bootloader.cmake)
 
 function( add_fw_module target)
     install(
