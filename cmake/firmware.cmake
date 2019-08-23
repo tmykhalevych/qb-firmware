@@ -1,3 +1,5 @@
+include_guard(GLOBAL)
+
 include(cmake/linux.cmake)
 include(cmake/bootloader.cmake)
 

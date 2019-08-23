@@ -1,8 +1,8 @@
+include_guard(GLOBAL)
+
 include(cmake/board.cmake)
 
-set(ARCH arm)
-set(LINUX_CROSS_COMPILE arm-linux-gnueabihf-) # TODO: Try to build via Linaro AND move CROSS_COMPILE to globals
-
+set(LINUX_CROSS_COMPILE arm-linux-gnueabihf-)
 set(LINUX_SRC_DIR ${PROJECT_SOURCE_DIR}/linux)
 set(LINUX_BUILD_DIR ${CMAKE_BINARY_DIR}/linux)
 set(LINUX_OUT_DIR ${LINUX_BUILD_DIR}/arch/arm/boot)

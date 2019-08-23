@@ -1,11 +1,9 @@
 include(cmake/board.cmake)
 
-set(UBOOT_CROSS_COMPILE aarch64-linux-gnu-) # TODO: Try to build via Linaro AND move CROSS_COMPILE to globals
-
 set(UBOOT_SRC_DIR ${PROJECT_SOURCE_DIR}/boot/u-boot)
 set(BOOT_TOOLS_DIR ${PROJECT_SOURCE_DIR}/boot/tools)
 set(UBOOT_BUILD_DIR ${CMAKE_BINARY_DIR}/u-boot)
-set(UBOOT_CROSSCOMPILE_PARAMS CROSS_COMPILE=${UBOOT_CROSS_COMPILE} O=${UBOOT_BUILD_DIR})
+set(UBOOT_CROSSCOMPILE_PARAMS CROSS_COMPILE=$ENV{QB_BUILD_TOOL_NAME}- O=${UBOOT_BUILD_DIR})
 set(UBOOT_MAKE_PARAMS) # Currently there is nothing here
 set(UBOOT_TARGETS u-boot.bin)
 

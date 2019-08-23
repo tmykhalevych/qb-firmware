@@ -1,7 +1,7 @@
-[submodule "linux"]
-	path = linux
-	url = https://github.com/tmykhalevych/qb-linux.git
 [submodule "boot/u-boot"]
 	path = boot/u-boot
 	url = https://github.com/u-boot/u-boot
 	branch = master
+[submodule "linux"]
+	path = linux
+	url = https://github.com/tmykhalevych/qb-linux.git
