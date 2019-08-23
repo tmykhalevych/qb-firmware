@@ -1,5 +1,6 @@
 include(cmake/board.cmake)
 
+set(BROADCOM_PRECOMPILED ${PROJECT_SOURCE_DIR}/boot/broadcom)
 set(UBOOT_SRC_DIR ${PROJECT_SOURCE_DIR}/boot/u-boot)
 set(BOOT_TOOLS_DIR ${PROJECT_SOURCE_DIR}/boot/tools)
 set(UBOOT_BUILD_DIR ${CMAKE_BINARY_DIR}/u-boot)
@@ -15,8 +16,9 @@ add_custom_target( bl-build # bl for bootloader
     COMMAND mkdir -p ${FIRMWARE_BOOT_ROOT}
     # TODO: Generate ${FIRMWARE_BOOT_ROOT}/u-boot.img
     COMMAND touch ${FIRMWARE_BOOT_ROOT}/uEnv.txt
-    COMMAND source ${BOOT_TOOLS_DIR}/uEnv.txt.filler ${FIRMWARE_BOOT_ROOT}/uEnv.txt
-    # TODO: Download rpi-boot dependencies into boot/rpi-boot from https://github.com/raspberrypi/firmware/tree/master/boot
+    COMMAND sh ${BOOT_TOOLS_DIR}/uEnv.txt.filler ${FIRMWARE_BOOT_ROOT}/uEnv.txt
+    COMMAND cp -u ${BROADCOM_PRECOMPILED}/* ${FIRMWARE_BOOT_ROOT}/
+    # TODO: Create and copy config.txt and other config files for RPi bootloaders
     WORKING_DIRECTORY ${UBOOT_SRC_DIR}
 )
 
