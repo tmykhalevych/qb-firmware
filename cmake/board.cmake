@@ -1,7 +1,7 @@
 include_guard(GLOBAL)
 
 if (NOT BOARD)
-    message("== Set default BIARD to Raspberry Pi 3")
+    message("== Set default BOARD to Raspberry Pi 3")
     set(BOARD rp3)
 endif ()
 

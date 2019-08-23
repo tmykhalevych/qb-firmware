@@ -1,5 +1,9 @@
+if (DEFINED $ENV{LINUX_TOOLCHAIN_PATH})
+    message( FATAL_ERROR "== Please set LINUX_TOOLCHAIN_PATH env variable. Aborting...")
+endif ()
+
 if (DEFINED $ENV{QB_BUILD_TOOL_NAME})
-    message("== Please set QB_BUILD_TOOL_NAME env variable. Aborting...")
+    message( FATAL_ERROR "== Please set QB_BUILD_TOOL_NAME env variable. Aborting...")
 endif ()
 
 if (DEFINED $ENV{QB_TOOLCHAIN_PATH})

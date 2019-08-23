@@ -15,7 +15,8 @@ add_custom_target( bl-build # bl for bootloader
     COMMAND mkdir -p ${FIRMWARE_BOOT_ROOT}
     # TODO: Generate ${FIRMWARE_BOOT_ROOT}/u-boot.img
     COMMAND touch ${FIRMWARE_BOOT_ROOT}/uEnv.txt
-    # TODO: Fulfillte uEnv.txt using ${BOOT_TOOLS_DIR}/uEnv.txt.filler
+    COMMAND source ${BOOT_TOOLS_DIR}/uEnv.txt.filler ${FIRMWARE_BOOT_ROOT}/uEnv.txt
+    # TODO: Download rpi-boot dependencies into boot/rpi-boot from https://github.com/raspberrypi/firmware/tree/master/boot
     WORKING_DIRECTORY ${UBOOT_SRC_DIR}
 )
 
