@@ -5,3 +5,6 @@
 [submodule "linux"]
 	path = linux
 	url = https://github.com/tmykhalevych/qb-linux.git
+[submodule "busybox"]
+	path = busybox
+	url = git://git.busybox.net/busybox
