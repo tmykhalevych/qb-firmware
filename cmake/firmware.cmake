@@ -2,6 +2,7 @@ include_guard(GLOBAL)
 
 include(cmake/linux.cmake)
 include(cmake/bootloader.cmake)
+include(cmake/busybox.cmake)
 
 function( add_fw_module target)
     install(
@@ -19,5 +20,9 @@ function( add_fw_unit unit)
 endfunction()
 
 add_custom_target( compose
+    # TODO: Implement
+)
+
+add_custom_target( decompose
     # TODO: Implement
 )

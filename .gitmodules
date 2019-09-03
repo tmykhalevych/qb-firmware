@@ -1,10 +1,6 @@
-[submodule "boot/u-boot"]
-	path = boot/u-boot
-	url = https://github.com/u-boot/u-boot
-	branch = master
-[submodule "linux"]
-	path = linux
+[submodule "os/linux"]
+	path = os/linux
 	url = https://github.com/tmykhalevych/qb-linux.git
-[submodule "busybox"]
-	path = busybox
+[submodule "os/busybox"]
+	path = os/busybox
 	url = git://git.busybox.net/busybox

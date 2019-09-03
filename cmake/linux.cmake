@@ -3,7 +3,7 @@ include_guard(GLOBAL)
 include(cmake/board.cmake)
 
 set(LINUX_CROSS_COMPILE arm-linux-gnueabihf-)
-set(LINUX_SRC_DIR ${PROJECT_SOURCE_DIR}/linux)
+set(LINUX_SRC_DIR ${PROJECT_SOURCE_DIR}/os/linux)
 set(LINUX_BUILD_DIR ${CMAKE_BINARY_DIR}/linux)
 set(LINUX_OUT_DIR ${LINUX_BUILD_DIR}/arch/arm/boot)
 set(LINUX_CROSSCOMPILE_PARAMS ARCH=${ARCH} CROSS_COMPILE=${LINUX_CROSS_COMPILE} O=${LINUX_BUILD_DIR})
