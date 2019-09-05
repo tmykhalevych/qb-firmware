@@ -2,7 +2,7 @@ include_guard(GLOBAL)
 
 include(cmake/linux.cmake)
 include(cmake/bootloader.cmake)
-include(cmake/busybox.cmake)
+include(cmake/rootfs.cmake)
 
 function( add_fw_module target)
     install(
