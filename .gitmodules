@@ -4,3 +4,9 @@
 [submodule "os/busybox"]
 	path = os/busybox
 	url = git://git.busybox.net/busybox
+[submodule "os/glibc"]
+	path = os/glibc
+	url = https://github.com/bminor/glibc.git
+[submodule "os/dropbear"]
+	path = os/dropbear
+	url = https://github.com/mkj/dropbear.git

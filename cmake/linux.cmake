@@ -11,6 +11,7 @@ set(LINUX_MAKE_PARAMS) # Currently there is nothing here
 set(LINUX_BUILD_TARGETS zImage modules dtbs)
 set(LINUX_INSTALL_TARGETS modules_install)
 set(LINUX_INSTALL_FLAFS INSTALL_MOD_PATH=${CMAKE_INSTALL_PREFIX})
+set(SYSTEM_INIT_FILE ${PROJECT_SOURCE_DIR}/os/rcS)
 
 add_custom_target( os-configure
     COMMAND sh ${PROJECT_SOURCE_DIR}/setup.env
